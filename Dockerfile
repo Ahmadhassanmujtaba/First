@@ -6,7 +6,7 @@ RUN yarn install --pure-lockfile
 COPY frontend .
 RUN yarn build
 
-FROM nginx:alpine
+FROM nginx:1.29.3-alpine3.22
 COPY frontend/nginx.conf /etc/nginx/conf.d/configfile.template
 COPY --from=builder /app/build /usr/share/nginx/html
 ENV PORT 8080
